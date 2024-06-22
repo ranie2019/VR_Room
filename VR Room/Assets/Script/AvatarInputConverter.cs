@@ -7,8 +7,6 @@ public class AvatarInputConverter : MonoBehaviour
     public Transform MainAvatarTransform;  // Transform principal do avatar
     public Transform AvatarHead;           // Transform da cabeça do avatar
     public Transform AvatarBody;           // Transform do corpo do avatar
-    public Transform AvatarHand_Left;      // Transform da mão esquerda do avatar
-    public Transform AvatarHand_Right;     // Transform da mão direita do avatar
 
     // Transforms do XR Rig
     [Header("Transforms do XR Rig")]
@@ -26,9 +24,6 @@ public class AvatarInputConverter : MonoBehaviour
     {
         // Sincronizar a posição/rotação da cabeça e do corpo do avatar com o XR Rig
         SyncHeadAndBody();
-
-        // Sincronizar a posição/rotação das mãos do avatar com o XR Rig
-        SyncHands();
     }
 
     // Sincroniza a cabeça e o corpo do avatar com a cabeça do XR Rig
@@ -45,14 +40,4 @@ public class AvatarInputConverter : MonoBehaviour
     }
 
     // Sincroniza as mãos do avatar com as mãos do XR Rig
-    private void SyncHands()
-    {
-        // Move e rotaciona suavemente a mão direita
-        AvatarHand_Right.position = Vector3.Lerp(AvatarHand_Right.position, XRHand_Right.position, Time.deltaTime * 5f);
-        AvatarHand_Right.rotation = Quaternion.Lerp(AvatarHand_Right.rotation, XRHand_Right.rotation, Time.deltaTime * 5f) * Quaternion.Euler(handRotationOffset);
-
-        // Move e rotaciona suavemente a mão esquerda
-        AvatarHand_Left.position = Vector3.Lerp(AvatarHand_Left.position, XRHand_Left.position, Time.deltaTime * 5f);
-        AvatarHand_Left.rotation = Quaternion.Lerp(AvatarHand_Left.rotation, XRHand_Left.rotation, Time.deltaTime * 5f) * Quaternion.Euler(handRotationOffset);
-    }
 }

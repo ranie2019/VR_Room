@@ -3,18 +3,18 @@ using UnityEngine;
 using UnityEngine.Video;
 
 /// <summary>
-/// Play a single video or play from a list of videos 
+/// Toca um único vídeo ou reproduz a partir de uma lista de vídeos 
 /// </summary>
 [RequireComponent(typeof(VideoPlayer))]
 public class PlayVideo : MonoBehaviour
 {
-    [Tooltip("Whether video should play on load")]
+    [Tooltip("Se o vídeo deve tocar ao iniciar")]
     public bool playAtStart = false;
 
-    [Tooltip("Material used for playing the video (Uses URP/Unlit by default)")]
+    [Tooltip("Material usado para reproduzir o vídeo (Usa URP/Unlit por padrão)")]
     public Material videoMaterial = null;
 
-    [Tooltip("List of video clips to pull from")]
+    [Tooltip("Lista de clipes de vídeo para escolher")]
     public List<VideoClip> videoClips = new List<VideoClip>();
 
     private VideoPlayer videoPlayer = null;
@@ -128,7 +128,21 @@ public class PlayVideo : MonoBehaviour
 
     private void OnValidate()
     {
-        var mat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
-        videoMaterial = mat;
+        // Verifica se o material do vídeo é nulo
+        if (videoMaterial == null)
+        {
+            // Tenta encontrar o shader "Universal Render Pipeline/Unlit"
+            var shader = Shader.Find("Universal Render Pipeline/Unlit");
+            if (shader != null)
+            {
+                // Cria um novo material com o shader encontrado
+                videoMaterial = new Material(shader);
+            }
+            else
+            {
+                // Registra um erro no console se o shader não for encontrado
+                Debug.LogError("Shader 'Universal Render Pipeline/Unlit' não encontrado! Certifique-se de que o shader está incluído no projeto.");
+            }
+        }
     }
 }

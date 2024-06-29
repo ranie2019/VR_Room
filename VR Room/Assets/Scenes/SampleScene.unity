@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18341881, g: 0.22901219, b: 0.30599007, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8402,6 +8401,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6630460184577125046}
+        m_TargetAssemblyTypeName: PlayVideo, Assembly-CSharp
+        m_MethodName: TogglePlayStop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Deactivated:
     m_PersistentCalls:
       m_Calls:
@@ -8848,7 +8859,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 44b2a3a1458da6a4a94c228d967474ad, type: 2}
+  - {fileID: -8672605235374421519, guid: 18eb93125c4dc48309f35bea3f9afe65, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9325,7 +9336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playAtStart: 0
-  videoMaterial: {fileID: 2100000, guid: 7533a8a46b3494648a1ca47af86ed1da, type: 2}
+  videoMaterial: {fileID: -8672605235374421519, guid: 18eb93125c4dc48309f35bea3f9afe65, type: 2}
   videoClips:
   - {fileID: 32900000, guid: 5f1cae7316f8b3d4a9506f17aaf67443, type: 3}
 --- !u!1 &6701424224352672861

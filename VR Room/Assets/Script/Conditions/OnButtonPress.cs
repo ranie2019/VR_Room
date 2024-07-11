@@ -18,33 +18,63 @@ public class OnButtonPress : MonoBehaviour
 
     private void Awake()
     {
-        action.started += Pressed;
-        action.canceled += Released;
+        if (action != null)
+        {
+            action.started += Pressed;
+            action.canceled += Released;
+        }
+        else
+        {
+            Debug.LogError("InputAction not set on " + gameObject.name);
+        }
     }
 
     private void OnDestroy()
     {
-        action.started -= Pressed;
-        action.canceled -= Released;
+        if (action != null)
+        {
+            action.started -= Pressed;
+            action.canceled -= Released;
+        }
     }
 
     private void OnEnable()
     {
-        action.Enable();
+        if (action != null)
+        {
+            action.Enable();
+        }
     }
 
     private void OnDisable()
     {
-        action.Disable();
+        if (action != null)
+        {
+            action.Disable();
+        }
     }
 
     private void Pressed(InputAction.CallbackContext context)
     {
-        OnPress.Invoke();
+        if (OnPress != null)
+        {
+            OnPress.Invoke();
+        }
+        else
+        {
+            Debug.LogWarning("OnPress event is not assigned in " + gameObject.name);
+        }
     }
 
     private void Released(InputAction.CallbackContext context)
     {
-        OnRelease.Invoke();
+        if (OnRelease != null)
+        {
+            OnRelease.Invoke();
+        }
+        else
+        {
+            Debug.LogWarning("OnRelease event is not assigned in " + gameObject.name);
+        }
     }
 }
